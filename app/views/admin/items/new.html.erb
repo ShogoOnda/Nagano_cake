@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-auto mb-3 bg-light">
+      <h4>商品新規登録</h4>
+    </div>
+  </div>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+
+  <div class="form-group">
+    <label for="item_name">商品名</label>
+    <%= f.text_field :name, class: "form-control item_name" %>
+  </div>
+
+  <div class="form-group">
+    <label for="item_introduction">商品説明</label>
+    <%= f.text_area :introduction, class: "form-control item_introduction" %>
+  </div>
+
+  <div class="form-group">
+    <label for="item_genre">ジャンル</label>
+    <%= f.collection_select :genre, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="form-group">
+    <label for="item_price">税抜価格</label>
+    <%= f.text_area :price, class: "form-control item_introduction" %>
+  </div>
+
+  <div class="form-group">
+    <label for="item_price">販売ステータス</label>
+      <%= f.label :is_active_on_sale, '販売中' %>
+      <%= f.radio_button :is_active, :on_sale %>
+      <%= f.label :is_active_stop_sale, '販売停止中' %>
+      <%= f.radio_button :is_active, :stop_sale %>
+  </div>
+
+  <div class="form-group">
+   <%= f.submit 'Create Book', class: "btn btn-success" %>
+  </div>
+  <% end %>
+
+</div>
+
