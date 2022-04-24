@@ -34,5 +34,4 @@ class Admin::GenresController < ApplicationController
     params.require(:genre).permit(:name)
   end
 
-
 end

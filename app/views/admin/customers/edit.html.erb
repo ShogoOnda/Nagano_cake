@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-auto bg-light">
+      <h4><%= @customer.name %>さんの会員情報編集</h4>
+    </div>
+  </div>
+  <div class="row my-4">
+    <%= form_with model: @customer, url: admin_customers_path, method: :patch do |f| %>
+      <h6 class="item_name">会員ID</h6>
+      <%= @customer.id %>
+      <h6 class="item_name">商品名</h6>
+      <%= f.text_field :name, class: "form-control" %>
+      <h6 class="item_name">商品説明</h6>
+      <%= f.text_area :introduction, class: "form-control" %>
+      <h6 class="item_name">ジャンル</h6>
+      <%= f.collection_select :genre, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+      <h6 class="item_name">税抜価格</h6>
+      <%= f.text_field :price, class: "form-control" %>
+      <h6 class="item_name">販売ステータス</h6>
+      <%= f.label :is_active_on_sale, '販売中' %>
+      <%= f.radio_button :is_active, :on_sale %>
+      <%= f.label :is_active_stop_sale, '販売停止中' %>
+      <%= f.radio_button :is_active, :stop_sale %>
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
