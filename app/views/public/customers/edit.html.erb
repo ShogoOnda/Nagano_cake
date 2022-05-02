@@ -2,20 +2,15 @@
   <div class="row">
     <div class="col-md-auto bg-light">
       <h4 class="font-weight-bold">
-        <%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集
+        会員情報編集
       </h4>
     </div>
   </div>
-  <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+  <%= form_with model: @customer, url: edit_customer_path(current_customer.id), method: :patch do |f| %>
     <div class="row my-3">
       <table class="table  table-borderless">
         <tbody>
 
-          <tr>
-            <th>会員ID</th>
-            <td><%= @customer.id %></td>
-          </tr>
-          <tr>
             <th>氏名</th>
             <td>
               <%= f.text_field :last_name %>
@@ -44,13 +39,6 @@
           <tr>
             <th>メールアドレス</th>
             <td><%= f.email_field :email %></td>
-          </tr>
-          <tr>
-            <th>会員ステータス</th>
-            <td>
-              <%= f.radio_button :is_deleted, false %>有効
-              <%= f.radio_button :is_deleted, true %>退会
-            </td>
           </tr>
         </tbody>
       </table>

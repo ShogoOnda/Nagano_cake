@@ -1,27 +1,65 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-auto bg-light">
+    <div class="col-md-auto mb-3 bg-light">
       <h4>商品編集</h4>
     </div>
   </div>
-  <div class="row my-4">
-    <%= form_with model: @item, url: admin_items_path, method: :patch do |f| %>
+  <div class="col-md-10 offset-md-2">
+    <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">商品画像</label>
+      </div>
+      <div class="form-group col-md-8 my-1">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
       <h6 class="item_name">商品名</h6>
-      <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-8 my-1">
+      <%= f.text_field :name, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
       <h6 class="item_name">商品説明</h6>
-      <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-8">
+      <%= f.text_area :introduction, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
       <h6 class="item_name">ジャンル</h6>
-      <%= f.collection_select :genre, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+      </div>
+      <div class="form-group col-md-8">
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
       <h6 class="item_name">税抜価格</h6>
-      <%= f.text_field :price, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-8">
+      <%= f.text_field :price, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
       <h6 class="item_name">販売ステータス</h6>
+      </div>
+      <div class="form-group col-md-8">
       <%= f.label :is_active_on_sale, '販売中' %>
       <%= f.radio_button :is_active, :on_sale %>
       <%= f.label :is_active_stop_sale, '販売停止中' %>
       <%= f.radio_button :is_active, :stop_sale %>
-      <%= f.submit '変更を保存', class: "btn btn-success" %>
+      </div>
+    </div>
+  <div class="form-group col-md-8 offset-md-2 mt-2">
+   <%= f.submit '変更を保存', class: "btn btn-success" %>
+  </div>
     <% end %>
   </div>
 </div>

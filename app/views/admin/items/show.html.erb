@@ -1,30 +1,53 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="col-md-auto mb-3 bg-light">
-      <h4>商品詳細</h4>
+      <h4 class="font-weight-bold">
+        商品詳細
+      </h4>
     </div>
   </div>
-
-    <div class="form-group">
-      <label for="item_image"></label>
-      <%= @item.image %>
+  <div class="row my-5">
+    <div class="col-md-4">
+      <% if @item.image.attached? %>
+      <%= image_tag @item.image, size: "200x200" %>
+      <% end %>
     </div>
-
-    <div class="form-group">
-      <label for="item_name">商品名</label>
-      <%= @item.name %>
+    <div class="col-md-6">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>商品名</th>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <th>税込価格(税抜価格)</th>
+            <td><%= @item.with_tax_price %> (<%= @item.price %>)円</td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td class="text-success font-weight-bold">
+            <% if @item.is_active == true %>
+              販売中
+            <% else @item.is_active == false %>
+              販売停止中
+            <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="form-group">
-      <label for="item_introduction">商品説明</label>
-      <%= @item.introduction %>
+  </div>
+  <div class="row">
+    <div class="field row mx-auto">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
     </div>
-
-    <div class="form-group">
-      <label for="item_introduction">ジャンル</label>
-      <%= @item.genre.name %>
-    </div>
-
-    <%=link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
-
+  </div>
 </div>

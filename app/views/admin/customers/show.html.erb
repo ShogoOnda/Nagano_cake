@@ -1,41 +1,61 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-md-auto mb-3 bg-light">
-      <h4><%= @customer.name %>さんの会員情報詳細</h4>
+    <div class="col-md-auto bg-light">
+      <h4><%= @customer.last_name %> <%= @customer.first_name %>さんの会員詳細</h4>
     </div>
   </div>
-
-    <div class="form-group">
-      <label for="customer_id">会員ID</label>
-      <%= @custmor.id %>
+  <div class="row my-3">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.last_name_kana %> <%=  @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @customer.is_deleted == true %>
+            退会
+            <% else @customer.is_deleted == false %>
+            <div class="text-success font-weight-bold">
+              有効
+            </div>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row my-2">
+    <div class="col-md-6 text-right">
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success" %>
     </div>
-
-    <div class="form-group">
-      <label for="custmer_name">氏名</label>
-      <%= @customer.name %>
+    <div class="col-md-6 text-left">
+      <%= link_to "注文履歴一覧を見る", admin_root_path, class:"btn btn-primary" %>
     </div>
-
-    <div class="form-group">
-      <label for="customer_name_kana">フリガナ</label>
-      <%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
-    </div>
-
-    <div class="form-group">
-      <label for="customer_introduction">郵便番号</label>
-      <%= @customer.postal_code %>
-    </div>
-
-    <div class="form-group">
-      <label for="customer_introduction">住所</label>
-      <%= @customer.address %>
-    </div>
-
-    <div class="form-group">
-      <label for="customer_introduction">電話番号</label>
-      <%= @customer.telephone_number %>
-    </div>
-
-    <%=link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-    <%=link_to "注文履歴一覧を見る", edit_admin_item_path(@item.id), class: "btn btn-success" %>
-
+  </div>
 </div>
