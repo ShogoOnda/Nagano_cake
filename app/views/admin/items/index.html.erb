@@ -3,6 +3,9 @@
     <div class="col-md-auto mb-3 bg-light">
       <h4>商品一覧</h4>
     </div>
+    <div class="offset-10 text-right">
+    <%= link_to "＋", new_admin_item_path, class: "btn btn-secondary rounded-circle p-1 pl-2 pr-2" %>
+    </div>
   </div>
 
   <table class="table table-hover table-inverse my-3">
@@ -33,4 +36,9 @@
       </tbody>
     <% end %>
   </table>
+    <div class="row my-2">
+    <div class="col-md-4 offset-md-4">
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>

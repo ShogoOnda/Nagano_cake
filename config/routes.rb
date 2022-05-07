@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to =>"homes#top"
     get "admin/home/about"=>"admin/homes#about", as: 'about'
+    patch "/orders/:id/status" => "orders#status_update", as: "status" # 注文ステータスupdate
+    patch "/orders/:id/making_status" => "orders#making_status_update", as: "making_status" # 製作ステータスupdate
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

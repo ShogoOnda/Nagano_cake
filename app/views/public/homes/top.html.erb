@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 mb-5 text-center">
       <h4>ようこそ、ながのCAKEへ！</h4>
       <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
       <h4>会員でない方も商品の閲覧はできますが、</h4>
@@ -14,10 +14,10 @@
   </div>
   <div class="row">
     <% @items.each do |item| %>
-      <div class="d-flex flex-column bd-highlight mb-6">
+      <div class="offset-md-1 d-flex flex-column bd-highlight mb-6">
         <%= link_to item_path(item.id) do %>
           <div class="p-2 bd-highlight">
-            <%= image_tag item.image, size: "200x200" %>
+            <%= image_tag item.image, size: "150x150" %>
           </div>
         <% end %>
         <div class="p-2 bd-highlight">

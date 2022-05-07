@@ -6,7 +6,6 @@ class Admin::OrdersController < ApplicationController
     @subtotal = 0
     @total_price = 0
     @shipping_cost = 800
-
   end
 
   def status_update
@@ -14,7 +13,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     # 製作ステータスの自動更新
-    if params[:order][:status] == "payment_confirmation"
+    if params[:order][:status] == "paid_up"
       @order.order_details.update_all(making_status: 1)
       # update_allにすることで注文商品の製作ステータスが更新される
     end

@@ -30,7 +30,7 @@
   </div>
     <div class="row my-2">
       <div class="col-md-4 offset-md-1">
-        <%= f.radio_button :address, 0 %>
+        <%= f.radio_button :my_address, 0 %>
         <%= f.label :address_current, 'ご自身の住所' %>
       </div>
     </div>
@@ -47,7 +47,7 @@
     </div>
     <div class="row my-2">
       <div class="col-md-5 offset-md-1">
-        <%= f.radio_button :address, :select %>
+        <%= f.radio_button :my_address, 1 %>
         <%= f.label :address_select, '登録済み住所からの選択' %>
       </div>
     </div>
@@ -59,7 +59,7 @@
 
     <div class="row  my-2">
       <div class="col-md-4 offset-md-1">
-        <%= f.radio_button :address, 0 %>
+        <%= f.radio_button :my_address, 2 %>
         <%= f.label :address_new, '新しいお届け先' %>
       </div>
     </div>
