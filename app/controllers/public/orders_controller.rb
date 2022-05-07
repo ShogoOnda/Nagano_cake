@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.save
       end
       current_customer.cart_items.destroy_all
-      redirect_to orders_complete_path
+      redirect_to complete_path
     end
   end
 
@@ -42,7 +42,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @total_price = 0
     @order.shipping_cost = 800
-
     if params[:order][:my_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
@@ -53,13 +52,12 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
       @order.address = @address.address
     end
-
   end
 
   def complete
   end
-  
-  
+
+
 
   private
   def order_params

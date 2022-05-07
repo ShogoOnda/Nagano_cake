@@ -12,14 +12,14 @@
   <%= form_with model: @order, url: confirm_path do |f| %>
   <div class="row">
     <div class="col-md-4 offset-md-1">
-      <%= f.radio_button :payment_method, :creditcard %>
-      <%= f.label :payment_method_creditcard, 'クレジットカード' %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:creditcard] %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4 offset-md-1">
-      <%= f.radio_button :payment_method, :banktransfer %>
-      <%= f.label :payment_method_banktransfer, '銀行振込' %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
     </div>
   </div>
 
@@ -30,7 +30,8 @@
   </div>
     <div class="row my-2">
       <div class="col-md-4 offset-md-1">
-        <%= f.radio_button :my_address, 0 %>ご自身の住所
+        <%= f.radio_button :address, 0 %>
+        <%= f.label :address_current, 'ご自身の住所' %>
       </div>
     </div>
     <div class="row  my-2">
@@ -46,7 +47,8 @@
     </div>
     <div class="row my-2">
       <div class="col-md-5 offset-md-1">
-        <%= f.radio_button :my_address, 1 %>登録済み住所からの選択
+        <%= f.radio_button :address, :select %>
+        <%= f.label :address_select, '登録済み住所からの選択' %>
       </div>
     </div>
     <div class="row mb-4">
@@ -57,7 +59,8 @@
 
     <div class="row  my-2">
       <div class="col-md-4 offset-md-1">
-        <%= f.radio_button :my_address, 2 %>新しいお届け先
+        <%= f.radio_button :address, 0 %>
+        <%= f.label :address_new, '新しいお届け先' %>
       </div>
     </div>
     <div class="row my-2">

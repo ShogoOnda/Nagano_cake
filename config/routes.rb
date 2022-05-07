@@ -11,16 +11,16 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get "/about"=>"homes#about", as: 'about'
     get "/customers/my_page" => "customers#show", as: "customers"
-    resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
     get "/customers/unsubscribe"=>"customers#unsubscribe", as: 'unsubscribe'
-    patch "/customers/withdraw"=>"customers#withdraw", as: 'withdraw'
-    resources :cart_items, only: [:index, :update, :detroy, :create]
+    patch "/customers/withdraw" => "customers#withdraw", as: 'withdraw'
     delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: 'destroy_all'
-    resources :orders, only: [:new, :create, :index, :show]
     post "/orders/confirm"=>"orders#confirm", as: 'confirm'
     get "/orders/complete"=>"orders#complete", as: 'complete'
-    resources :addresses, only: [:index, :edit, :create, :update, :detroy]
+    resources :customers, only: [:show, :edit, :update]
+    resources :items, only: [:show, :index]
+    resources :cart_items, only: [:create, :index, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create]
+    resources :addresses, only: [:edit, :index, :create, :update, :destroy]
   end
 
   # 管理者用

@@ -6,7 +6,7 @@
       </h4>
     </div>
   </div>
-  <%= form_with model: @customer, url: edit_customer_path(current_customer.id), method: :patch do |f| %>
+  <%= form_with model: @customer, url: customer_path(current_customer.id), method: :patch do |f| %>
     <div class="row my-3">
       <table class="table  table-borderless">
         <tbody>

@@ -1,45 +1,35 @@
 <div class="container my-5">
-  <div class="row my-3">
-    <div class="col-md-2">
-      <div class="d-flex flex-column bd-highlight mb-3">
-        <h6 class="font-weight-bold py-2">
-          ジャンル一覧
-        </h6>
-        <% @genres.each do |genre| %>
-            <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
-        <% end %>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col-md-auto offset-md-2 py-5 text-center">
-        <h4>ようこそ、ながのCAKEへ！</h4>
-        <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
-        <h4>会員でない方も商品の閲覧はできますが、</h4>
-        <h4>購入には会員登録が必要になります</h4>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-md-12 text-center">
+      <h4>ようこそ、ながのCAKEへ！</h4>
+      <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
+      <h4>会員でない方も商品の閲覧はできますが、</h4>
+      <h4>購入には会員登録が必要になります。</h4>
     </div>
   </div>
+  <div class="row my-3">
+    <h4 class="font-weight-bold">
+      新着商品
+    </h4>
+  </div>
   <div class="row">
-    <div class="col-md-10 offset-md-2">
-      <div class="font-weight-bold">
-        <h4 class="my-2">
-          新着商品
-        </h4>
-      </div>
-      <div class="d-flex flex-column bd-highlight mb-3">
-        <% @items.each do |item| %>
-          <%= link_to item_path(item.id) do %>
-            <div class="p-2 bd-highlight">
-              <%= image_tag item.image, size: "150x150" %>
-            </div>
-          <% end %>
-            <div class="p-2 bd-highlight">
-              <%= item.name %>
-            </div>
-            <div class="p-2 bd-highlight">
-              ￥<%= item.price %>
-            </div>
+    <% @items.each do |item| %>
+      <div class="d-flex flex-column bd-highlight mb-6">
+        <%= link_to item_path(item.id) do %>
+          <div class="p-2 bd-highlight">
+            <%= image_tag item.image, size: "200x200" %>
+          </div>
         <% end %>
+        <div class="p-2 bd-highlight">
+          <%= item.name %>
+        </div>
+        <div class="p-2 bd-highlight">
+          ￥<%= item.price %>
+        </div>
       </div>
+    <% end %>
+  </div>
+  <div class="text-right">
+    <%= link_to "全ての商品を見る＞", items_path %>
   </div>
 </div>
