@@ -1,24 +1,23 @@
-# README
+# <Nagano＿CAKE>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+<ケーキのECサイト>
 
-* System dependencies
+### ターゲットユーザ
 
-* Configuration
+<甘党の皆様>
 
-* Database creation
+### 主な利用シーン
 
-* Database initialization
+<ケーキ販売を目的とした販売店の商品管理、ネットでケーキが買いたい方へのサービス>
 
-* How to run the test suite
+## 開発環境
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
