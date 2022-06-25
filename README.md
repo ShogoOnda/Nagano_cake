@@ -2,6 +2,9 @@
 
 ## サイト概要
 
+DMM WEB CAMP の課題３として作成したケーキ販売のECサイトです。
+作成を通して、データベース設計(ER図)、bootstrapやdeviceによる管理者,パブリック機能の作成,enum,boolean,ページネーションについて学びました。
+
 ### サイトテーマ
 
 <ケーキのECサイト>
@@ -21,3 +24,6 @@
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
+
+##　テスト動画
+https://drive.google.com/file/d/16croT8VN0yebOFeAVbb5yN21PwfTXaFW/view?usp=sharing
